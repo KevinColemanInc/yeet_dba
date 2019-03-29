@@ -41,9 +41,10 @@ Finnally, if there is a table that we think should have a foreign key constraint
 
 `WARNING - orphaned rows alternative_housings . supplier_id | suppliers`
 
-## Requirements
+## Compatibility
 
 Rails 5.2 (but it may work with 5.0+)
+Ruby 2.4+
 
 ## Road map to v1
 
