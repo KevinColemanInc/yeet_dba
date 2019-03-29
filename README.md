@@ -20,13 +20,13 @@ And then execute:
 
 ## Usage
 
-This probably should run against the production database so you can know if there are dangling records.
+This probably should run against the production database so you can know if there are dangling records. If there are records with a value, but not the corresponding table does not have an id, then the migration will fail.
 
 ```
-$ rails g yeet_db:foreign_key_migration
+$ RAILS_ENV=production rails g yeet_db:foreign_key_migration
 ```
 
-This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)
+This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)`
 
 `WARNING - cannot find association for alternative_housings . supplier_id | suppliers`
 
@@ -45,9 +45,13 @@ Rails 5.2 (but it may work with 5.0+)
 ## Road map to v1
 
 [ ] add rake task identify all dangling records
+
 [ ] add rake task to automatically nullify or destroy dangling records
+
 [ ] run as a rake task
+
 [ ] support "soft delete" gems
+
 
 ## Development
 
