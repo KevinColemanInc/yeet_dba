@@ -6,6 +6,8 @@ yeet_db scans your rails tables for missing foreign key constraints. If there ar
 
 If you have dangling migrations, check the generator logs to see where you have invalid orphaned rows. Orphaned row meaning a row with an id that doesn't exist in the associated table.
 
+but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/questions/375704/why-should-i-use-foreign-keys-in-database)
+
 ## Installation
 
 Add this line to your application's Gemfile:

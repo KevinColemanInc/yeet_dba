@@ -16,7 +16,7 @@ module YeetDb
     private
 
     def migration_file
-      File.join("db/migrate", "add_foreign_keys.rb")
+      File.join("db/migrate", "add_foreign_keys_yeet_db.rb")
     end
 
     def migration_version

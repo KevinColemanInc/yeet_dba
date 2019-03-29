@@ -14,11 +14,11 @@ module YeetDb
         next unless column.is_association?
 
         unless column.model
-          Rails.logger(:warn, "WARNING - cannot find model for #{table_name} . #{column_name.name} | #{column&.association_table_name}")
+          puts "YeetDb - cannot find model for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         unless column.association
-          Rails.logger(:warn, "WARNING - cannot find association for #{table_name} . #{column_name.name} | #{column&.association_table_name}")
+          puts "YeetDb - cannot find association for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         next if column.polymorphic_association?
@@ -26,8 +26,10 @@ module YeetDb
         next if column.association_table_name.blank?
 
         if VerifyData.new(column: column).orphaned_rows?
-          Rails.logger(:warn, "WARNING - orphaned rows #{table_name} . #{column_name.name} | #{column&.association_table_name}")
+          puts "YeetDb - orphaned rows. Skipping #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          next
         end
+
         foreign_key = ForeignKey.new(table_a: table_name,
                                      table_b: column&.association_table_name,
                                      column: column_name.name)
