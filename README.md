@@ -1,12 +1,13 @@
 ![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_dba.png)
 
 # yeet_dba - find missing foreign key constraints
+<a href="https://codeclimate.com/github/KevinColemanInc/yeet_dba/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0baa6373d4be7f0d630/maintainability" /></a>
 
 yeet_dba scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
 
 If you have dangling migrations, check the generator logs to see where you have invalid orphaned rows. Orphaned row meaning a row with an id that doesn't exist in the associated table.
 
-but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/questions/375704/why-should-i-use-foreign-keys-in-database)
+but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/a/375708)
 
 ## Installation
 
