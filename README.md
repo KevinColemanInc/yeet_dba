@@ -1,7 +1,7 @@
 ![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_dba.png)
 
 # yeet_dba - find missing foreign key constraints
-<a href="https://codeclimate.com/github/KevinColemanInc/yeet_dba/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0baa6373d4be7f0d630/maintainability" /></a>
+[![Gem Version](https://badge.fury.io/rb/yeet_dba.svg)](https://badge.fury.io/rb/yeet_dba) <a href="https://codeclimate.com/github/KevinColemanInc/yeet_dba/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0baa6373d4be7f0d630/maintainability" /></a>
 
 yeet_dba scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
 
@@ -75,3 +75,11 @@ Everyone interacting in the YeetDb project’s codebases, issue trackers, chat r
 
 ## Logo design attribute
 Foreign Key by Ary Prasetyo from the Noun Project
+
+## Thanks
+
+[AvoVietnam - Chat with Vietnamese](https://www.avovietnam.com)
+
+## Author
+
+Kevin Coleman, [https://kcoleman.me/](https://kcoleman.me)
