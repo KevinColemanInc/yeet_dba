@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "yeet_db"
+require "yeet_dba"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

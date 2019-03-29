@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   class ArTable
     attr_accessor :table_name, :tables
 
@@ -14,11 +14,11 @@ module YeetDb
         next unless column.is_association?
 
         unless column.model
-          puts "YeetDb - cannot find model for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          puts "YeetDba - cannot find model for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         unless column.association
-          puts "YeetDb - cannot find association for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          puts "YeetDba - cannot find association for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         next if column.polymorphic_association?
@@ -26,7 +26,7 @@ module YeetDb
         next if column.association_table_name.blank?
 
         if VerifyData.new(column: column).orphaned_rows?
-          puts "YeetDb - orphaned rows. Skipping #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          puts "YeetDba - orphaned rows. Skipping #{table_name} . #{column_name.name} | #{column&.association_table_name}"
           next
         end
 

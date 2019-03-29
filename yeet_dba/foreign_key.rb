@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   class ForeignKey
     attr_accessor :table_a,
                   :table_b,

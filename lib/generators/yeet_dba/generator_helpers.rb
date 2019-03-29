@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   module GeneratorHelpers
 
   end

@@ -1,8 +1,8 @@
-![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_db.png)
+![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_dba.png)
 
-# yeet_db - find missing foreign key constraints
+# yeet_dba - find missing foreign key constraints
 
-yeet_db scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
+yeet_dba scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
 
 If you have dangling migrations, check the generator logs to see where you have invalid orphaned rows. Orphaned row meaning a row with an id that doesn't exist in the associated table.
 
@@ -13,7 +13,7 @@ but [why should I use foreign keys?](https://softwareengineering.stackexchange.c
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'yeet_db'
+gem 'yeet_dba'
 ```
 
 And then execute:
@@ -25,7 +25,7 @@ And then execute:
 This probably should run against the production database so you can know if there are dangling records. If there are records with a value, but not the corresponding table does not have an id, then the migration will fail.
 
 ```
-$ RAILS_ENV=production rails g yeet_db:foreign_key_migration
+$ RAILS_ENV=production rails g yeet_dba:foreign_key_migration
 ```
 
 This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)`
@@ -61,7 +61,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kevincolemaninc/yeet_db. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kevincolemaninc/yeet_dba. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -69,7 +69,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the YeetDb project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kevincolemaninc/yeet_db/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the YeetDba project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/kevincolemaninc/yeet_dba/blob/master/CODE_OF_CONDUCT.md).
 
 ## Logo design attribute
 Foreign Key by Ary Prasetyo from the Noun Project

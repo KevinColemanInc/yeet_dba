@@ -1,6 +1,6 @@
-# require 'generators/yeet_db/generator_helpers'
+# require 'generators/yeet_dba/generator_helpers'
 
-module YeetDb
+module YeetDba
   # Custom scaffolding generator
   class ForeignKeyMigrationGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
@@ -8,7 +8,7 @@ module YeetDb
     desc "Generates migration for adding foreign key constraints."   
 
     def copy_migration_and_spec_files
-      migration_template "add_foreign_keys_yeet_db.rb",
+      migration_template "add_foreign_keys_yeet_dba.rb",
                          migration_file,
                          migration_version: migration_version
     end
@@ -16,7 +16,7 @@ module YeetDb
     private
 
     def migration_file
-      File.join("db/migrate", "add_foreign_keys_yeet_db.rb")
+      File.join("db/migrate", "add_foreign_keys_yeet_dba.rb")
     end
 
     def migration_version

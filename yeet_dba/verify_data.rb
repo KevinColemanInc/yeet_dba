@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   class VerifyData
   attr_accessor :column
 

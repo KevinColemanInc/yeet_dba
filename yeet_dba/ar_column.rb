@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   class ArColumn
     attr_accessor :column_name, :table_name, :tables
 

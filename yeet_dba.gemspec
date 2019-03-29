@@ -1,25 +1,25 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "yeet_db/version"
+require "yeet_dba/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "yeet_db"
-  spec.version       = YeetDb::VERSION
+  spec.name          = "yeet_dba"
+  spec.version       = YeetDba::VERSION
   spec.authors       = ["Kevin Coleman"]
   spec.email         = ["kevin.coleman@sparkstart.io"]
 
   spec.summary       = %q{Generates foreign key constraint migrations for rails databases}
   spec.description   = %q{This scan every ActiveRecord model looking for relationships ('has_many', 'belongs_to', etc.) and adds foreign key constraints.}
-  spec.homepage      = 'http://rubygems.org/gems/yeet_db'
+  spec.homepage      = 'http://rubygems.org/gems/yeet_dba'
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/kevincolemaninc/yeet_db"
-    spec.metadata["changelog_uri"] = "https://github.com/kevincolemaninc/yeet_db/master/CHANGELOG.md"
+    spec.metadata["source_code_uri"] = "https://github.com/kevincolemaninc/yeet_dba"
+    spec.metadata["changelog_uri"] = "https://github.com/kevincolemaninc/yeet_dba/master/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."

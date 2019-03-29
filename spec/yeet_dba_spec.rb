@@ -1,6 +1,6 @@
-RSpec.describe YeetDb do
+RSpec.describe YeetDba do
   it "has a version number" do
-    expect(YeetDb::VERSION).not_to be nil
+    expect(YeetDba::VERSION).not_to be nil
   end
 
   it "does something useful" do

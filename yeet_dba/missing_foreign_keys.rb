@@ -1,4 +1,4 @@
-module YeetDb
+module YeetDba
   class MissingForeignKeys
     def self.foreign_keys
       Rails.application.eager_load!
