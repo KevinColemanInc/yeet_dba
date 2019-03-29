@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "yeet_dba/version"
+require "./yeet_dba/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "yeet_dba"
