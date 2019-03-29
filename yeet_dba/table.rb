@@ -1,5 +1,5 @@
 module YeetDba
-  class ArTable
+  class Table
     attr_accessor :table_name, :tables
 
     def initialize(table_name:, tables:)
@@ -10,7 +10,7 @@ module YeetDba
     def missing_keys
       missing_keys_array = []
       columns.each do |column_name|
-        column = ArColumn.new(column_name: column_name, table_name: table_name, tables: tables)
+        column = Column.new(column_name: column_name, table_name: table_name, tables: tables)
         next unless column.is_association?
 
         unless column.model

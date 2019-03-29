@@ -1,5 +1,5 @@
 module YeetDba
-  class ArColumn
+  class Column
     attr_accessor :column_name, :table_name, :tables
 
     def initialize(column_name:, table_name:, tables:)
