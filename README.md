@@ -1,6 +1,6 @@
 ![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_db.png)
 
-# yeet_db
+# yeet_db - find missing foreign key constraints
 
 yeet_db scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
 
@@ -44,13 +44,10 @@ Rails 5.2 (but it may work with 5.0+)
 
 ## Road map to v1
 
-[ ] add rake task identify all dangling records
-
-[ ] add rake task to automatically nullify or destroy dangling records
-
-[ ] run as a rake task
-
-[ ] support "soft delete" gems
+- [ ] add rake task identify all dangling records
+- [ ] add rake task to automatically nullify or destroy dangling records
+- [ ] run as a rake task
+- [ ] support "soft delete" gems
 
 
 ## Development
