@@ -44,6 +44,7 @@ Rails 5.2 (but it may work with 5.0+)
 
 ## Road map to v1
 
+- [ ] rspec tests
 - [ ] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
 - [ ] run as a rake task
