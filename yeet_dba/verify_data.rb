@@ -14,7 +14,6 @@ module YeetDba
 
     def orphaned_rows
       association = column.association
-      binding.pry if column.column_name.is_a?(String)
 
       column_name = column.column_name.name
       table_name = column.table_name
