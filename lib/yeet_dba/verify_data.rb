@@ -10,7 +10,7 @@ module YeetDba
       orphaned_rows.first
     end
 
-  private
+    private
 
     def orphaned_rows
       association = column.association
