@@ -47,12 +47,12 @@ Finnally, if there is a table that we think should have a foreign key constraint
 
 ## Compatibility
 
-Rails 5.2 (but it may work with 5.0+)
-Ruby 2.4+
+- Rails 5.2 (but it may work with 5.0+)
+- Ruby 2.4+
 
 ## Road map to v1
 
-- [ ] rspec tests
+- [x] rspec tests
 - [ ] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
 - [ ] run as a rake task
