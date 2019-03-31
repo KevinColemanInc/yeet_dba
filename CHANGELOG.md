@@ -1,10 +1,13 @@
 # 0.1.2
 
+# 0.1.2
+
 ## Breaking changes
 
 ## Minor changes
 
 Add rubocop
+Add rspec tests
 
 # 0.1.1
 
