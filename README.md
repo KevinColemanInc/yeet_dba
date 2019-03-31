@@ -9,6 +9,10 @@ If you have dangling migrations, check the generator logs to see where you have 
 
 but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/a/375708)
 
+but what is the difference between yeet_db and [lol_dba](https://github.com/plentz/lol_dba)?
+
+lol_dba will only add indexes for RoR models. yeet_dba looks at every table (including join tables) to add foreign key constraints, which also add indexes.
+
 ## Installation
 
 Add this line to your application's Gemfile:
