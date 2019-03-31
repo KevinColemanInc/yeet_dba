@@ -1,13 +1,17 @@
 ![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_dba.png)
 
 # yeet_dba - find missing foreign key constraints
-[![Gem Version](https://badge.fury.io/rb/yeet_dba.svg)](https://badge.fury.io/rb/yeet_dba) <a href="https://codeclimate.com/github/KevinColemanInc/yeet_dba/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0baa6373d4be7f0d630/maintainability" /></a>
+[![Gem Version](https://badge.fury.io/rb/yeet_dba.svg)](https://badge.fury.io/rb/yeet_dba) <a href="https://codeclimate.com/github/KevinColemanInc/yeet_dba/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0baa6373d4be7f0d630/maintainability" /></a>[![Build Status](https://travis-ci.com/KevinColemanInc/yeet_dba.svg?branch=master)](https://travis-ci.com/KevinColemanInc/yeet_dba)
 
 yeet_dba scans your rails tables for missing foreign key constraints. If there are no dangling records, it will create a migration to add the foreign key constraints on all the table it is safe.
 
 If you have dangling migrations, check the generator logs to see where you have invalid orphaned rows. Orphaned row meaning a row with an id that doesn't exist in the associated table.
 
 but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/a/375708)
+
+but what is the difference between yeet_db and [lol_dba](https://github.com/plentz/lol_dba)?
+
+lol_dba will only add indexes for RoR models. yeet_dba looks at every table (including join tables) to add foreign key constraints, which also add indexes.
 
 ## Installation
 

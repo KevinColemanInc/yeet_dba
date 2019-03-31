@@ -5,6 +5,7 @@ require 'yeet_dba/version'
 Gem::Specification.new do |spec|
   spec.name          = 'yeet_dba'
   spec.version       = YeetDba::VERSION
+  spec.platform      = Gem::Platform::RUBY
   spec.authors       = ['Kevin Coleman']
   spec.email         = ['kevin.coleman@sparkstart.io']
 
@@ -36,4 +37,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+
+  spec.required_ruby_version = '>= 2.4.0'
+  spec.add_dependency 'actionpack', '>= 3.0', '< 6.0'
+  spec.add_dependency 'activerecord', '>= 3.0', '< 6.0'
+  spec.add_dependency 'railties', '>= 3.0', '< 6.0'
 end
