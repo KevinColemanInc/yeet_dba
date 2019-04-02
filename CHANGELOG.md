@@ -1,8 +1,8 @@
 # 0.1.2
 
-# 0.1.2
+## Major changes
 
-## Breaking changes
+Added rake task to find invalid data
 
 ## Minor changes
 

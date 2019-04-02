@@ -1,8 +1,8 @@
 RSpec.describe YeetDba::MissingForeignKeys do
   it 'finds missing foreign keys' do
-    missing_foreign_keys = [["user_id", "profiles", "users"],
-     ["user_id", "companies_users", "users"],
-     ["company_id", "companies_users", "companies"]]
+    missing_foreign_keys = [%w[user_id profiles users],
+                            %w[user_id companies_users users],
+                            %w[company_id companies_users companies]]
     expect(YeetDba::MissingForeignKeys.foreign_keys).not_to be_empty
 
     YeetDba::MissingForeignKeys.foreign_keys.each_with_index do |f_k, i|
