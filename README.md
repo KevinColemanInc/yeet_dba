@@ -37,11 +37,11 @@ $ RAILS_ENV=production rails g yeet_dba:foreign_key_migration
 
 This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)`
 
-`WARNING - cannot find association for alternative_housings . supplier_id | suppliers`
+`WARNING - cannot find an association for alternative_housings . supplier_id | suppliers`
 
-We also warn if we have tables that don't have existing models attached to them. This can be safe to ignore, because join tables on many to many relations don't need models, but ideally everything should have an AR model backing it.
+We also warn if we have tables that don't have existing models attached to them. This can be safe to ignore because join tables on many to many relations don't need models, but ideally, everything should have an AR model backing it.
 
-`WARNING - cannot find model for alternative_housings . supplier_id | suppliers`
+`WARNING - cannot find a model for alternative_housings . supplier_id | suppliers`
 
 Finnally, if there is a table that we think should have a foreign key constraint, but there are dangling values we warn you against that too.
 
@@ -83,7 +83,7 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 - [x] rspec tests
 - [x] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
-- [ ] run as a rake task
+- [ ] run adding foreign keys as rake task instead of generating a migration
 - [ ] support "soft delete" gems
 
 

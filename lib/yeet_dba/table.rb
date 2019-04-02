@@ -36,11 +36,11 @@ module YeetDba
         next unless column.is_association?
 
         unless column.model
-          puts "YeetDba - cannot find model for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          puts "WARNING - cannot find a model for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         unless column.association
-          puts "YeetDba - cannot find association for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
+          puts "WARNING - cannot find an association for #{table_name} . #{column_name.name} | #{column&.association_table_name}"
         end
 
         next if column.polymorphic_association?
