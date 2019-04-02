@@ -7,6 +7,28 @@ module YeetDba
       @tables = tables
     end
 
+    def invalid_columns
+      missing_keys_array = []
+      columns.each do |column_name|
+        column = Column.new(column_name: column_name, table_name: table_name, tables: tables)
+        next unless column.is_association?
+        next if column.polymorphic_association?
+        next if column.foreign_key_exists?
+        next if column.association_table_name.blank?
+        verify_data = VerifyData.new(column: column)
+        next unless verify_data.orphaned_rows?
+
+        invalid_column = InvalidColumn.new(table: table_name,
+                                        column: column_name.name,
+                                        associated_table: column&.association_table_name,
+                                        query: verify_data.query,
+                                        orphaned_rows_count: verify_data.orphaned_rows_count)
+        missing_keys_array.push(invalid_column)
+
+      end
+      missing_keys_array
+    end
+
     def missing_keys
       missing_keys_array = []
       columns.each do |column_name|

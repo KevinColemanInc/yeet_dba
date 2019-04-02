@@ -27,6 +27,8 @@ And then execute:
 
 ## Usage
 
+### Add missing foriegn keys migration
+
 This probably should run against the production database so you can know if there are dangling records. If there are records with a value, but not the corresponding table does not have an id, then the migration will fail.
 
 ```
@@ -45,6 +47,32 @@ Finnally, if there is a table that we think should have a foreign key constraint
 
 `WARNING - orphaned rows alternative_housings . supplier_id | suppliers`
 
+### Show which rows have bad orphaned columns
+
+If a row has an id, but there doesn't exist an id the expected associated table, then the row has bad data and should either be fixed by nulling the orphaned row or assigning it to an existing row.
+
+This rake task will scan every column for orphaned rows.
+
+```
+$ RAILS_ENV=production rake yeet_dba:foreign_key_migration
+```
+
+Sample output:
+
+```
+---RESULTS---
+
+🚨Houston, we have a problem 🚨. We found 1 invalid column.
+
+-> notifications.primary_image_id
+Invalid rows:   83
+Foreign table:  active_storage_attachments
+
+This query should return no results:
+SELECT "notifications".* FROM "notifications" left join active_storage_attachments as association_table on association_table.id = notifications.primary_image_id WHERE "notifications"."primary_image_id" IS NOT NULL AND (association_table.id is null)
+
+```
+
 ## Compatibility
 
 - Rails 5.2 (but it may work with 5.0+)
@@ -53,7 +81,7 @@ Finnally, if there is a table that we think should have a foreign key constraint
 ## Road map to v1
 
 - [x] rspec tests
-- [ ] add rake task identify all dangling records
+- [x] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
 - [ ] run as a rake task
 - [ ] support "soft delete" gems
