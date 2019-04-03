@@ -73,6 +73,22 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 
 ```
 
+### Add missing foriegn keys as a rake task
+
+You might want to add foreign keys outside of your regular deployment flow in case there are failures and deployment would be blocked by bad data. This would be especially obnoxious for MySql users since you can't rollback migrations.
+
+```
+$ RAILS_ENV=production rake yeet_dba:add_foreign_keys
+```
+
+Sample output
+
+```
+ERROR - users . profile_id failed to add key
+```
+
+This rake task is idempotent (safe to run as many times as you need).
+
 ## Compatibility
 
 - Rails 5.2 (but it may work with 5.0+)
@@ -83,7 +99,7 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 - [x] rspec tests
 - [x] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
-- [ ] run adding foreign keys as rake task instead of generating a migration
+- [x] run adding foreign keys as rake task instead of generating a migration
 - [ ] support "soft delete" gems
 
 
