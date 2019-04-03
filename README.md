@@ -7,9 +7,18 @@ yeet_dba scans your rails tables for missing foreign key constraints. If there a
 
 If you have dangling migrations, check the generator logs to see where you have invalid orphaned rows. Orphaned row meaning a row with an id that doesn't exist in the associated table.
 
-but [why should I use foreign keys?](https://softwareengineering.stackexchange.com/a/375708)
+### But why should I use foreign keys?
 
-but what is the difference between yeet_db and [lol_dba](https://github.com/plentz/lol_dba)?
+You can save yourself an N+1 call by checking if the id has a value instead of loading up the object.
+
+```ruby
+user.company.id # bad - N+1
+user.company_id # good
+```
+
+But this doesn't work if you don't nullify the `company_id` when the company is deleted. Foreign key constraints prevent you from deleting a record without cleaning out the associated tables.
+
+### But what is the difference between yeet_db and [lol_dba](https://github.com/plentz/lol_dba)?
 
 lol_dba will only add indexes for RoR models. yeet_dba looks at every table (including join tables) to add foreign key constraints, which also add indexes.
 
