@@ -73,7 +73,7 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 
 ```
 
-### Add missing foriegn keys migration
+### Add missing foriegn keys as a rake task
 
 You might want to add foreign keys outside of your regular deployment flow in case there are failures and deployemt would be blocked by bad data. This would be especially obnoxious for MySql users since you can't rollback migrations.
 
