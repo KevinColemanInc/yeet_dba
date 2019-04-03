@@ -110,7 +110,7 @@ This rake task is idempotent (safe to run as many times as you need).
 - [ ] add rake task to automatically nullify or destroy dangling records
 - [x] run adding foreign keys as rake task instead of generating a migration
 - [ ] support "soft delete" gems
-- [ ] Use rails associations to find columns that should be "not null"
+- [ ] Use rails associations to find columns that should be "not null" to [improve performance](https://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
 
 
 ## Development
