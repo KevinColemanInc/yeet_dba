@@ -99,7 +99,7 @@ This rake task is idempotent (safe to run as many times as you need).
 - [x] rspec tests
 - [x] add rake task identify all dangling records
 - [ ] add rake task to automatically nullify or destroy dangling records
-- [3] run adding foreign keys as rake task instead of generating a migration
+- [x] run adding foreign keys as rake task instead of generating a migration
 - [ ] support "soft delete" gems
 
 
