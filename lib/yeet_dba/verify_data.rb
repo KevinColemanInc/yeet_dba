@@ -20,12 +20,10 @@ module YeetDba
       orphaned_rows.to_sql
     end
 
-    private
-
     def orphaned_rows
       association = column.association
 
-      column_name = column.column_name.name
+      column_name = column.db_column.name
       table_name = column.table_name
       association_table = column.association_table_name
       model = column.model

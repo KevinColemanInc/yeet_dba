@@ -9,7 +9,7 @@
 ## Major changes
 
 Added rake task to find invalid data
-Added rake task to add the foreign keys to the database
+Added rake task to nullify and delete invalid data
 
 ## Minor changes
 
