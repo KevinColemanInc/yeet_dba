@@ -1,21 +1,20 @@
 module YeetDba
   class InvalidColumn
-    attr_accessor :table,
+    attr_accessor :table_name,
                   :column,
-                  :associated_table,
-                  :query,
-                  :orphaned_rows_count
+                  :verify_data
 
-    def initialize(table:, associated_table:, column:, query:, orphaned_rows_count:)
-      @table = table
-      @associated_table = associated_table
+    def initialize(table_name:, column:, verify_data:)
+      @table_name = table_name
       @column = column
-      @query = query
-      @orphaned_rows_count = orphaned_rows_count
+      @verify_data = verify_data
     end
 
+    delegate :association_table_name, :db_column, :association, to: :column
+    delegate :orphaned_rows_count, :query, to: :verify_data
+
     def to_s
-      "#{table} . #{column} has #{orphaned_rows_count} invalid rows with foreign table #{associated_table}"
+      "#{table_name} . #{db_column.name} has #{orphaned_rows_count} invalid rows with foreign table #{association_table_name}"
     end
   end
 end

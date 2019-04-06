@@ -1,19 +1,19 @@
 module YeetDba
   class Column
-    attr_accessor :column_name, :table_name, :tables
+    attr_accessor :db_column, :table_name, :tables
 
-    def initialize(column_name:, table_name:, tables:)
-      @column_name = column_name
+    def initialize(db_column:, table_name:, tables:)
+      @db_column = db_column
       @table_name = table_name
       @tables = tables
     end
 
     def is_association?
-      column_name.name =~ /_id\z/
+      db_column.name =~ /_id\z/
     end
 
     def association_klass
-      model && model.reflections[association_name]&.klass
+      association&.klass
     end
 
     def association_table_name
@@ -21,7 +21,7 @@ module YeetDba
     end
 
     def association_name
-      column_name.name.gsub(/_id\z/, '')
+      db_column.name.gsub(/_id\z/, '')
     end
 
     def model
@@ -37,7 +37,7 @@ module YeetDba
     end
 
     def foreign_key_exists?
-      ActiveRecord::Migration.foreign_key_exists?(table_name, column: column_name.name)
+      ActiveRecord::Migration.foreign_key_exists?(table_name, column: db_column.name)
     end
 
     def guessed_table_name
