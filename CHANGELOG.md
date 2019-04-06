@@ -1,3 +1,9 @@
+# 0.2.0
+
+## Major changes
+
+## Minor changes
+
 # 0.1.2
 
 ## Major changes
