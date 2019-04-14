@@ -1,3 +1,4 @@
+
 ![Foreign Key by Ary Prasetyo from the Noun Project](./yeet_dba.png)
 
 # yeet_dba - find missing foreign key constraints
@@ -34,29 +35,9 @@ And then execute:
 
     $ bundle
 
-## Usage
+## Start here
 
-### Foriegn keys migration
-
-This probably should run against the production database so you can know if there are dangling records. If there are records with a value, but not the corresponding table does not have an id, then the migration will fail.
-
-```
-$ RAILS_ENV=production rails g yeet_dba:foreign_key_migration
-```
-
-This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)`
-
-`WARNING - cannot find an association for alternative_housings . supplier_id | suppliers`
-
-We also warn if we have tables that don't have existing models attached to them. This can be safe to ignore because join tables on many to many relations don't need models, but ideally, everything should have an AR model backing it.
-
-`WARNING - cannot find a model for alternative_housings . supplier_id | suppliers`
-
-Finnally, if there is a table that we think should have a foreign key constraint, but there are dangling values we warn you against that too.
-
-`WARNING - orphaned rows alternative_housings . supplier_id | suppliers`
-
-### Invalid rows
+### 1. Find invalid rows
 
 If a row has an id, but there doesn't exist an id the expected associated table, then the row has bad data and should either be fixed by nulling the orphaned row or assigning it to an existing row.
 
@@ -82,35 +63,43 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 
 ```
 
-### Fix invalid rows
+### 2. Fix invalid rows
 
-If a row has an id, but there doesn't exist an id the expected associated table, then the row has bad data and should either be fixed by nulling the orphaned row or assigning it to an existing row.
+You can either manually repair your data via rails console or direct SQL queries, or you can run a rake task to resolve failures.
 
-This rake task will scan every column for orphaned rows.
+If your rails association requires a value (e.g. `belongs_to :user, required: true`), then we try to delete the row.
 
-```
-$ RAILS_ENV=production rake yeet_dba:fix_invalid_columns
-```
+If your rails association says a value is optional, then we try to nullify the value if the schema alls that column to be null.
 
-Sample output:
+If your schema does not allow you to nullify a column, we print a warning.
 
 ```
----RESULTS---
-
-🚨Houston, we have a problem 🚨. We found 1 invalid column.
-
--> notifications.primary_image_id
-Invalid rows:   83
-Foreign table:  active_storage_attachments
-
-This query should return no results:
-SELECT "notifications".* FROM "notifications" left join active_storage_attachments as association_table on association_table.id = notifications.primary_image_id WHERE "notifications"."primary_image_id" IS NOT NULL AND (association_table.id is null)
-
+$ RAILS_ENV=production rake yeet_dba:nullify_or_destroy_invalid_rows
 ```
 
-### Add missing foriegn keys as a rake task
+### 3a. Add foreign keys via migration
 
-You might want to add foreign keys outside of your regular deployment flow in case there are failures and deployment would be blocked by bad data. This would be especially obnoxious for MySql users since you can't rollback migrations.
+Now that the database is in a valid state, we can add the foreign keys in a migration.
+
+```
+$ RAILS_ENV=production rails g yeet_dba:foreign_key_migration
+```
+
+This will create a new migration with for every foreign_key that can safely be added without running into orphaned data errors. We also warn you if active_record models that are missing association declarations (`has_many`, `belongs_to`, etc.)
+
+`WARNING - cannot find an association for alternative_housings . supplier_id | suppliers`
+
+We also warn if we have tables that don't have existing models attached to them. This can be safe to ignore because join tables on many to many relations don't need models, but ideally, everything should have an AR model backing it.
+
+`WARNING - cannot find a model for alternative_housings . supplier_id | suppliers`
+
+Finally, if there is a table that we think should have a foreign key constraint, but there are dangling values we warn you against that too.
+
+`WARNING - orphaned rows alternative_housings . supplier_id | suppliers`
+
+### 3b. Add missing foreign keys as a rake task
+
+You might want to add foreign keys outside of your regular deployment flow in case there are failures and deployment would be blocked by bad data. This would be especially obnoxious for MySql users since you can't rollback migrations on failure.
 
 ```
 $ RAILS_ENV=production rake yeet_dba:add_foreign_keys
@@ -135,9 +124,7 @@ This rake task is idempotent (safe to run as many times as you need).
 - [x] add rake task identify all dangling records
 - [x] add rake task to automatically nullify or destroy dangling records
 - [x] run adding foreign keys as rake task instead of generating a migration
-- [ ] support "soft delete" gems
-- [ ] Use rails associations to find columns that should be "not null" to [improve performance](https://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
-
+- [x] Use rails associations to find columns that should be "not null" to [improve performance](https://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
 
 ## Development
 
@@ -167,3 +154,4 @@ Foreign Key by Ary Prasetyo from the Noun Project
 ## Author
 
 Kevin Coleman, [https://kcoleman.me/](https://kcoleman.me)
+
