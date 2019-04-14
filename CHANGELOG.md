@@ -1,8 +1,12 @@
-# 0.2.1
-
-## Major changes
+# 1.0.1 (unreleased, master)
 
 ## Minor changes
+
+# 1.0.0
+
+## Minor changes
+
+Improved test coverage
 
 # 0.1.2
 
