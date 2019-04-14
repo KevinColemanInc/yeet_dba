@@ -21,7 +21,7 @@ But this doesn't work if you don't nullify the `company_id` when the company is 
 
 ### But what is the difference between yeet_db and [lol_dba](https://github.com/plentz/lol_dba)?
 
-lol_dba will only add indexes for RoR models. yeet_dba looks at every table (including join tables) to add foreign key constraints, which also add indexes.
+lol_dba will only add indexes for RoR models. yeet_dba looks at every table (including join tables) to add foreign key constraints.
 
 ## Installation
 
