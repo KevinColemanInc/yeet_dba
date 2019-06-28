@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    yeet_dba (0.2.1)
-      actionpack (>= 3.0, < 6.0)
-      activerecord (>= 3.0, < 6.0)
-      railties (>= 3.0, < 6.0)
+    yeet_dba (1.0.1)
+      actionpack (>= 3.0, < 7.0)
+      activerecord (>= 3.0, < 7.0)
+      railties (>= 3.0, < 7.0)
 
 GEM
   remote: https://rubygems.org/
