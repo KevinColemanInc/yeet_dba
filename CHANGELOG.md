@@ -2,6 +2,8 @@
 
 ## Minor changes
 
+Support Rails 6
+
 # 1.0.0
 
 ## Minor changes
