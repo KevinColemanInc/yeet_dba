@@ -63,6 +63,16 @@ SELECT "notifications".* FROM "notifications" left join active_storage_attachmen
 
 ```
 
+If you need to ignore certain tables from being checked simply add a `.yeet_dba.yml` in the Rails.root directory.
+
+```
+---
+  exclude_tables:
+    - table_to_be_ignored
+```
+
+For a sample configuration file check `.yeet_dba.example.yml`.
+
 ### 2. Fix invalid rows
 
 You can either manually repair your data via rails console or direct SQL queries, or you can run a rake task to resolve failures.
@@ -154,4 +164,3 @@ Foreign Key by Ary Prasetyo from the Noun Project
 ## Author
 
 Kevin Coleman, [https://kcoleman.me/](https://kcoleman.me)
-

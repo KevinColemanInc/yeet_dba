@@ -1,0 +1,3 @@
+---
+  exclude_tables:
+    - table_to_be_ignored
