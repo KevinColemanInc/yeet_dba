@@ -21,7 +21,23 @@ module YeetDba
     end
 
     def self.tables
-      ActiveRecord::Base.connection.tables
+      ActiveRecord::Base.connection.tables - self.ignored_tables
+    end
+
+    def self.ignored_tables
+      config['exclude_tables'] || []
+    end
+
+    def self.config
+      @config ||= begin
+        config_file = Pathname.new(Rails.root).join('.yeet_dba.yml')
+
+        if File.exist?(config_file)
+          YAML.load(File.read(config_file))
+        else
+          {}
+        end
+      end
     end
   end
 end

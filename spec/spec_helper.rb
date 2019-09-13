@@ -11,7 +11,7 @@ ActiveRecord::Base.establish_connection(
 
 module Rails
   def self.root
-    'spec/fixtures/'
+    Pathname.new('spec/fixtures/')
   end
 end
 Dir.glob("#{Rails.root}/app/models/*.rb").sort.each { |file| require_dependency file }
