@@ -11,5 +11,3 @@ gem 'railties'
 gem 'rspec-rails'
 gem 'sqlite3'
 gem 'test-unit'
-
-gem 'pry', require: true
