@@ -11,7 +11,7 @@ namespace :yeet_dba do
       puts "🚨Houston, we have a problem 🚨. We found #{columns.length} invalid column#{columns.length == 1 ? '' : 's'}."
       puts
       columns.each do |invalid_column|
-        puts "-> #{invalid_column.table}.#{invalid_column.column}"
+        puts "-> #{invalid_column.table_name}.#{invalid_column.column}"
         puts "Invalid rows:   #{invalid_column.orphaned_rows_count}"
         puts "Foreign table:  #{invalid_column.association_table_name}"
         puts
