@@ -4,6 +4,7 @@
 
 Support Rails 6
 Update gems and remove pry
+Fix bug in `find_orphaned_rows` rake task for [Issue #10](https://github.com/KevinColemanInc/yeet_dba/issues/10)
 
 # 1.0.0
 
