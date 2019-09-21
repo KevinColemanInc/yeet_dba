@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yeet_dba (1.0.1)
+    yeet_dba (1.0.2)
       actionpack (>= 3.0, < 7.0)
       activerecord (>= 3.0, < 7.0)
       railties (>= 3.0, < 7.0)
