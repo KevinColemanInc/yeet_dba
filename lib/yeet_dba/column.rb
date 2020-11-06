@@ -17,7 +17,11 @@ module YeetDba
     end
 
     def association_table_name
-      association_klass&.table_name || tables.detect { |table| table == guessed_table_name }
+      if association_klass&.ancestors&.include?(ActiveRecord::Base)
+        association_klass&.table_name
+      else
+        tables.detect { |table| table == guessed_table_name }
+      end
     end
 
     def association_name
