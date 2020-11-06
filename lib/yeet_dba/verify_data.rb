@@ -27,9 +27,13 @@ module YeetDba
       model = column.model
 
       # Check to see there could be rows with bad data
-      model.joins("left join #{association_table} as association_table on association_table.id = #{table_name}.#{column_name}")
-           .where.not(column_name => nil)
-           .where('association_table.id is null')
+      if model
+        model.joins("left join #{association_table} as association_table on association_table.id = #{table_name}.#{column_name}")
+            .where.not(column_name => nil)
+            .where('association_table.id is null')
+      else
+        []
+      end
     end
   end
 end
