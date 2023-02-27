@@ -1,5 +1,9 @@
 # 1.0.2  (unreleased, master)
 
+## Minor changes
+
+Support Rails 7
+
 # 1.0.1
 
 ## Minor changes
