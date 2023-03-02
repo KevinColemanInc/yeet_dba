@@ -1,4 +1,6 @@
-# 1.0.2  (unreleased, master)
+# 1.0.3  (unreleased, master)
+
+# 1.0.2
 
 ## Minor changes
 
