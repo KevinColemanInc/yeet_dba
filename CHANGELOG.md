@@ -3,6 +3,8 @@
 ## Minor changes
 
 Support Rails 7
+Bump ruby versions
+Bump bundler versions
 
 # 1.0.1
 
