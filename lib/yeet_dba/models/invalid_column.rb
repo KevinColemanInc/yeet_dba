@@ -14,7 +14,11 @@ module YeetDba
     delegate :orphaned_rows_count, :query, to: :verify_data
 
     def to_s
-      "#{table_name} . #{db_column.name} has #{orphaned_rows_count} invalid rows with foreign table #{association_table_name}"
+      "#{table_name} . #{db_column_name} has #{orphaned_rows_count} invalid rows with foreign table #{association_table_name}"
+    end
+
+    def db_column_name
+      db_column.name
     end
   end
 end
