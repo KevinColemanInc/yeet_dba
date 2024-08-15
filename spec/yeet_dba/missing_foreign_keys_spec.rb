@@ -21,6 +21,36 @@ RSpec.describe YeetDba::MissingForeignKeys do
     end
   end
 
+  describe '.ignored_columns' do
+    let(:configuration) do
+      {'exclude_columns' => {"mytable": ["mycolumn"]} }
+    end
+
+    let(:empty_configuration) do
+      {'exclude_columns' => nil }
+    end
+
+    let(:no_configuration) do
+      {}
+    end
+
+
+    it 'returns array of tables' do
+      expect(YeetDba::MissingForeignKeys).to receive(:config).and_return(configuration)
+      expect(YeetDba::MissingForeignKeys.ignored_columns).to eq({"mytable": ["mycolumn"]})
+    end
+
+    it 'returns empty array for empty config' do
+      expect(YeetDba::MissingForeignKeys).to receive(:config).and_return(empty_configuration)
+      expect(YeetDba::MissingForeignKeys.ignored_columns).to eq({})
+    end
+
+    it 'return empty array for no config' do
+      expect(YeetDba::MissingForeignKeys).to receive(:config).and_return(no_configuration)
+      expect(YeetDba::MissingForeignKeys.ignored_columns).to eq({})
+    end
+  end
+
   describe '.ignored_tables' do
     let(:configuration) do
       {'exclude_tables' => ['table_to_be_ignored'] }

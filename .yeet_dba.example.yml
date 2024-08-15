@@ -1,3 +1,6 @@
 ---
   exclude_tables:
     - table_to_be_ignored
+  exclude_columns:
+    table_with_column_to_be_ignored:
+      - column_to_be_ignored

@@ -4,7 +4,7 @@ module YeetDba
       eager_load!
       tables.map do |table_name|
         Table.new(table_name: table_name,
-                  tables: tables).missing_keys
+                  tables: tables).missing_keys(ignored_columns[table_name])
       end.flatten
     end
 
@@ -12,7 +12,7 @@ module YeetDba
       eager_load!
       tables.map do |table_name|
         Table.new(table_name: table_name,
-                  tables: tables).invalid_columns
+                  tables: tables).invalid_columns(ignored_columns[table_name])
       end.flatten
     end
 
@@ -26,6 +26,10 @@ module YeetDba
 
     def self.ignored_tables
       config['exclude_tables'] || []
+    end
+
+    def self.ignored_columns
+      config['exclude_columns'] || {}
     end
 
     def self.config

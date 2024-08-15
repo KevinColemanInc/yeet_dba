@@ -11,10 +11,10 @@ ActiveRecord::Base.establish_connection(
 
 module Rails
   def self.root
-    Pathname.new('spec/fixtures/')
+    Pathname.new('./spec/fixtures/')
   end
 end
-Dir.glob("#{Rails.root}/app/models/*.rb").sort.each { |file| require_dependency file }
+Dir.glob("#{Rails.root}app/models/*.rb").sort.each { |file| require_dependency file }
 
 ActiveRecord::Schema.verbose = false
 load 'fixtures/schema.rb'

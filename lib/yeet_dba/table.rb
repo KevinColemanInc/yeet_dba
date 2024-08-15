@@ -7,10 +7,12 @@ module YeetDba
       @tables = tables
     end
 
-    def invalid_columns
+    def invalid_columns(ignored_columns)
+      ignored_columns ||= []
       missing_keys_array = []
       columns.each do |db_column|
         column = Column.new(db_column: db_column, table_name: table_name, tables: tables)
+        next if ignored_columns.include?(db_column.name)
         next unless column.is_association?
         next if column.polymorphic_association?
         next if column.foreign_key_exists?
@@ -27,11 +29,13 @@ module YeetDba
       missing_keys_array
     end
 
-    def missing_keys
+    def missing_keys(ignored_columns)
+      ignored_columns ||= []
       missing_keys_array = []
       columns.each do |db_column|
         column = Column.new(db_column: db_column, table_name: table_name, tables: tables)
         next unless column.is_association?
+        next if ignored_columns.include?(db_column.name)
 
         unless column.model
           puts "WARNING - cannot find a model for #{table_name} . #{db_column.name} | #{column&.association_table_name}"
